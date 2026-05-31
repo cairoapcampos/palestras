@@ -2,6 +2,9 @@
 
 Aplicação web fullstack para gerenciamento de eventos e palestras, com cadastro de usuários, autenticação segura e inscrições em eventos.
 
+
+![Tela do sistema](docs/tela.png)
+
 ---
 
 ## Tecnologias utilizadas
