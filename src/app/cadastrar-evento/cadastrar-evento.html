@@ -1,0 +1,58 @@
+<form [formGroup]="formularioPalestras" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+        <label for="email" class="form-label">Título</label>
+        <input type="text" class="form-control" formControlName="titulo" id="titulo">
+        @if(formularioPalestras.get('titulo')?.hasError('required') &&
+        formularioPalestras.get('titulo')?.touched) {
+        <p class="alert alert-warning">Campo <strong>título</strong> é
+            obrigatório!</p>
+        }
+    </div>
+    <div class="mb-3">
+        <label for="descricao" class="form-label">Descrição</label>
+        <input type="text" class="form-control" formControlName="descricao" id="descricao">
+        @if(formularioPalestras.get('descricao')?.hasError('required') &&
+        formularioPalestras.get('descricao')?.touched)
+        {
+        <p class="alert alert-warning">Campo <strong>descrição</strong> é
+            obrigatório!</p>
+        }
+    </div>
+    <div class="mb-3">
+        <label for="nomePalestrante" class="form-label">Palestrante</label>
+        <input type="text" class="form-control" formControlName="nomePalestrante" id="nomePalestrante">
+        @if(formularioPalestras.get('nomePalestrante')?.hasError('required')
+        &&
+        formularioPalestras.get('nomePalestrante')?.touched) {
+        <p class="alert alert-warning">Campo <strong>palestrante</strong> é
+            obrigatório!</p>
+        }
+    </div>
+    <div class="mb-3">
+        <label for="localEvento" class="form-label">Local</label>
+        <input type="text" class="form-control" formControlName="localEvento" id="localEvento">
+        @if(formularioPalestras.get('localEvento')?.hasError('required') &&
+        formularioPalestras.get('localEvento')?.touched) {
+        <p class="alert alert-warning">Campo <strong>local</strong> é
+            obrigatório!</p>
+        }
+    </div>
+    <div class="mb-3">
+        <label for="dataEvento" class="form-label">Data</label>
+        <input type="datetime-local" class="form-control" formControlName="dataEvento" id="dataEvento">
+        @if(formularioPalestras.get('dataEvento')?.hasError('required') &&
+        formularioPalestras.get('dataEvento')?.touched) {
+        <p class="alert alert-warning">Campo <strong>local</strong> é
+            obrigatório!</p>
+        }
+    </div>
+    <button type="submit" [disabled]="!formularioPalestras.valid">Enviar</button>
+</form>
+@if (mensagem) {
+<div class="alert alert-{{ tipoMensagem }} alert-dismissible fade show" role="alert"
+    style="width: 20%; margin: 20px auto;">
+    {{ mensagem }}
+    <button type="button" class="btn-close" (click)="mensagem = ''" aria- label="Close">
+    </button>
+</div>
+}

@@ -1,0 +1,70 @@
+<main class="container">
+    <h1 class="page-title">Eventos disponíveis</h1>
+
+    @if (palestras.length > 0) {
+    <div class="grade-eventos">
+        @for (p of palestras; track p.id) {
+        <div class="card-evento">
+            @if (palestraEmEdicao === p.id) {
+            <form [formGroup]="formularioEdicao" (ngSubmit)="salvarEdicao(p.id)" class="form-edicao">
+                <h3 class="form-title">Editar Evento</h3>
+                <div class="mb-2">
+                    <label class="form-label">Título</label>
+                    <input class="form-control" formControlName="titulo">
+                </div>
+                <div class="mb-2">
+                    <label class="form-label">Descrição</label>
+                    <input class="form-control" formControlName="descricao">
+                </div>
+                <div class="mb-2">
+                    <label class="form-label">Palestrante</label>
+                    <input class="form-control" formControlName="nomePalestrante">
+                </div>
+                <div class="mb-2">
+                    <label class="form-label">Local</label>
+                    <input class="form-control" formControlName="localEvento">
+                </div>
+                <div class="mb-2">
+                    <label class="form-label">Data e Hora</label>
+                    <input type="datetime-local" class="form-control" formControlName="dataEvento">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-salvar" [disabled]="!formularioEdicao.valid">Salvar</button>
+                    <button type="button" class="btn btn-cancelar" (click)="cancelarEdicao()">Cancelar</button>
+                </div>
+            </form>
+            } @else {
+            <div class="card-header-evento">
+                <h2 class="card-titulo">{{ p.titulo }}</h2>
+                <span class="inscritos-badge">{{ p.totalInscritos }} inscritos</span>
+            </div>
+            <p class="card-descricao">{{ p.descricao }}</p>
+            <div class="card-info">
+                <div class="info-item">🎤 <span>{{ p.nomePalestrante }}</span></div>
+                <div class="info-item">📍 <span>{{ p.localEvento }}</span></div>
+                <div class="info-item">📅 <span>{{ p.dataEvento | date: 'dd/MM/yyyy' }} às {{ p.dataEvento | date:
+                        'HH:mm' }}</span></div>
+            </div>
+            <div class="card-actions">
+                @if (userData?.admin) {
+                <button class="btn btn-editar" (click)="abrirEdicao(p)">✏️ Editar</button>
+                <button class="btn btn-excluir" (click)="excluirEvento(p.id)">🗑️ Excluir</button>
+                } @else {
+                @if (inscricoesUsuario.has(p.id)) {
+                <button class="btn btn-cancelar-inscricao" (click)="cancelarInscricao(p.id)">❌ Cancelar
+                    inscrição</button>
+                } @else {
+                <button class="btn btn-participar" (click)="inscricao(p.id)">✅ Participar</button>
+                }
+                }
+            </div>
+            }
+        </div>
+        }
+    </div>
+    } @else {
+    <div class="empty-state">
+        <p>Nenhum evento encontrado :(</p>
+    </div>
+    }
+</main>

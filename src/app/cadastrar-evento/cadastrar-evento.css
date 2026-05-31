@@ -1,0 +1,61 @@
+h1 {
+    text-align: center;
+    margin-top: 40px;
+    color: #065f46;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 480px;
+    margin: 40px auto;
+    border: 1px solid #a7f3d0;
+    padding: 32px;
+    border-radius: 12px;
+    background-color: #059669;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(5, 150, 105, 0.1);
+}
+
+.form-label {
+    font-weight: 600;
+    color: #fff;
+}
+
+.form-control {
+    margin-bottom: 4px;
+    border: 1px solid #6ee7b7;
+    border-radius: 6px;
+    padding: 8px 12px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #059669;
+    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
+}
+
+button[type="submit"] {
+    margin-top: 8px;
+    padding: 10px;
+    background-color: #1e293b;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    align-self: stretch;
+}
+
+button[type="submit"]:hover:not(:disabled) {
+    background-color: #0f172a;
+    transform: scale(1.01);
+}
+
+button[type="submit"]:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

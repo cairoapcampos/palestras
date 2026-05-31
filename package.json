@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "concurrently \"node server/server.js\" \"ng serve\"",
+    "server": "node server/server.js",
+    "dev": "concurrently \"node server/server.js\" \"ng serve\"",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -17,6 +19,15 @@
     "@angular/forms": "^21.2.0",
     "@angular/platform-browser": "^21.2.0",
     "@angular/router": "^21.2.0",
+    "@ng-bootstrap/ng-bootstrap": "^20.0.0",
+    "@popperjs/core": "^2.11.8",
+    "bcrypt": "^6.0.0",
+    "bootstrap": "^5.3.8",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mariadb": "^3.5.2",
+    "mysql2": "^3.22.4",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
@@ -24,9 +35,16 @@
     "@angular/build": "^21.2.7",
     "@angular/cli": "^21.2.7",
     "@angular/compiler-cli": "^21.2.0",
+    "@angular/localize": "^21.2.0",
+    "concurrently": "^10.0.0",
     "jsdom": "^28.0.0",
     "prettier": "^3.8.1",
     "typescript": "~5.9.2",
     "vitest": "^4.0.8"
-  }
+  },
+  "description": "This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.7.",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
